@@ -1,0 +1,175 @@
+package palabrav1.pkg3;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ *
+ * @Francelia_Bueno
+ */
+public class Palabrav13 {
+    Scanner scaner = new Scanner(System.in);
+    String reset = "\u001B[0m";
+    int cont = 0, ini = 0, total = 0, cont2 = 0; //variables usadas para incrementos
+    Nodo top = null; //Creación de listas
+    Random random = new Random();
+
+    static class Nodo {
+        //Datos y enlace usados
+        String name;
+        Nodo next;
+    }
+    public static void main(String[] args) {
+        String  reset = "\u001B[0m";
+        Scanner scaner = new Scanner(System.in);
+        Palabrav13 nodos = new Palabrav13(); //Creacion de un objeto llamado nodos
+        int Opcion;
+        do {
+            System.out.print("\n" + "1. Agregar nodo.\n"
+                    + "2. Mostrar lista.\n"
+                    + "3. Eliminar nodo.\n"
+                    + "4. Generar palabra. \n"
+                    + "5. Salir\n"
+                    + "Selecciona una opción: " );
+            switch (Opcion = scaner.nextInt()) {
+                case 1: //Opción 1 para agregar un nodo.
+                    nodos.AgregarNodo(); //Llamamos los metodos a ejecular con nuestro objeto creado.
+                    break;
+                case 2: //Opción 2 para mostrar los casos de los nodos.
+                    nodos.MostrarLista();
+                    break;
+                case 3: //Opción 3 para eliminar el ultimo nodo.
+                    nodos.ElimiNodo();
+                    break;
+                case 4: //Opción 4 para generar palabras con una longitud de 5 caracteres "Letras mayúsculas, minúsculas, números y caracteres.
+                    nodos.GenPalabra();
+                    break;
+            }
+        } while (Opcion != 5);
+        }
+
+    public void AgregarNodo() { //Uso de if anidados.
+        if (top == null) { //Si el nodo esta vacio o nulo agrega el pricipal nodo de la lista.
+            top = new Nodo(); //Creamos el principal nodo y le asisgnamos a la variable top los atributos de la clase Nodo(), estos serian "name" y "next".
+            top.name = "A"; //Se agregara el nodo "A" en nuesta lista llamada top y con el enlace "name" lo agregara de forma cadena "String".
+            top.next = null;  //El campo "next" al ser el primer nodo el valor sera null.
+            cont++;//Cuando el usiario seleccione la opción 1 hara un incremento cont++.
+            total++;//La varaible total se encargara de hacer incrementos las veces que el usuario seleccione la opción 1 y contara cuantos nodos se han creado.
+            System.out.println( "Nodo agregado con exito");
+        } else if (cont == 1) { //Cuando el incremento vuelva a tener el valor 1 agregara el nodo "B".
+            Nodo temp; //Este nodo se creara cuando el usuario haya creado el nodo "A" y cuando quiera ingresar otro nodo se agregara el nodo "B".
+            temp = new Nodo(); //Creamos un nodo temporal y le asisgnamos a la campo temp los atributos de la clase Nodo(), estos serian "name" y "next".
+            temp.name = "B"; //Cuando el usuario haya creado el nodo "A" y seleccione denuevo la opc. 1 se agregara el nodo "B", ejemplo A B.
+            temp.next = top; //El nodo "B" se agregara al ultimo de toda la lista.
+            top = temp; //Se asigna la referencia del Nodo recien creado a top.
+            cont++; //El incremento tendra el valor de 2.
+            total++; //La variable total seguira su ingremento.
+            System.out.println( "Nodo agregado con exito");
+        } else if (cont == 2) {//Cuando el incremento vuelva a tener el valor 2 agregara el nodo "BB".
+            Nodo temp; //Este nodo se creara cuando el usuario haya creado el nodo "B" y cuando quiera ingresar otro nodo se agregara el nodo "BB".
+            temp = new Nodo(); //Creamos un nodo temporal y le asisgnamos a la campo temp los atributos de la clase Nodo(), estos serian "name" y "next".
+            temp.name = "BB"; //Cuando el usuario haya creado el nodo "B" y seleccione denuevo la opc. 1 se agregara el nodo "BB", ejemplo A B BB.
+            temp.next = top; //El nodo "BB" se agregara al ultimo de toda la lista.
+            top = temp; //Se asigna la referencia del Nodo recien creado a top.
+            cont++; //El incremento tendra el valor de 3.
+            total++; //La variable total seguira su ingremento.
+            System.out.println("Nodo agregado con exito");
+        } else if (cont == 3) {//Cuando el incremento vuelva a tener el valor 1 agregara el nodo "BBB".
+            Nodo temp; //Este nodo se creara cuando el usuario haya creado el nodo "BB" y cuando quiera ingresar otro nodo se agregara el nodo "BBB".
+            temp = new Nodo();//Creamos un nodo temporal y le asisgnamos a la campo temp los atributos de la clase Nodo(), estos serian "name" y "next".
+            temp.name = "BBB";//Cuando el usuario haya creado el nodo "BB" y seleccione denuevo la opc. 1 se agregara el nodo "BBB", ejemplo A B BB BBB.
+            temp.next = top;//El nodo "BBB" se agregara al ultimo de toda la lista.
+            top = temp; //Se asigna la referencia del Nodo recien creado a top.
+            cont = ini; //Cuando el incremendo cont++ cuando tenga el valor de 3 entonces tomara la variable ini y empezará denuevo el incremento desde 0.
+            total++; //La variable total seguira su ingremento.
+            System.out.println("Nodo agregado con exito");
+        } else if (cont == 0) { //Cuando el incremento vuelva a tener el valor 0 agregara el nodo "A".
+            Nodo temp; //Este nodo se creara cuando el usuario haya creado el nodo "BBB" y cuando quiera ingresar otro nodo se agregara el nodo "A".
+            temp = new Nodo(); //Creamos un nodo temporal y le asisgnamos a la campo temp los atributos de la clase Nodo(), estos serian "name" y "next". 
+            temp.name = "A"; //Cuando el usuario haya creado el nodo "BBB" y seleccione denuevo la opc. 1 se agregara el nodo "A", ejemplo A B BB BBB A.
+            temp.next = top; //El nodo "A" se agregara al ultimo de toda la lista.
+            top = temp; //Se asigna la referencia del Nodo recien creado a top.
+            cont++; //El incremento tendra el valor de 1.
+            total++; //La variable total seguira su ingremento.
+            System.out.println("Nodo agregado con exito");
+        }
+    }
+    public static void mostrar(String name, Nodo sig) { //Nuestro metodo publico estatico "mostrar" tendra los parametros "name" de manera de cadena "String" y "sig" de manare de "Nodo"
+        System.out.println(name); // "name" permitira mostrar mensajes de salida de manera de cadena.
+        while (sig != null) { //Cuando el usuario haya creado el primer nodo entonces "sig" mostrara los todos los nodos que existen.
+            System.out.print(sig.name + "  "); //Permitira mostrar los nodos creados de manera de cadena.
+            sig = sig.next;
+        }
+    }
+
+    public void MostrarLista() { //Nuestro metodo "MostrarLista" se encargara mostrar todos los casos creados.
+        Nodo temp = new Nodo();
+        if (top == null) { //Si la lista esta vacia entonces mostrara un mensaje de salida que la lista esta vacía.
+            System.out.print( "La lista de nodos esta vacia");
+        } else {
+            temp = top; //Nuesta lista "temp" tomara los nodos de la lista llamada "top".
+            for (int i = total; i >= 1; i--) { //Mostrara todos los casos creador de manera ordenado.
+                mostrar("\n" + "caso " + i, temp); //Nuestro metodo "mostrar" se encargara de mostrar todos los casos y sus respectivos nodos.
+                System.out.println("   ");
+                temp = temp.next; //En nuestra lista "temp" se irán eleminando los nodos para que de esta manera no se resvuelva los nodos con los casos y de esta manera no perjudicara nuestra lista de nodos llamada "top".
+            }
+            System.out.print( "Total de nodos: " + total); //Mostrara cuantos nodos hay por el momento.
+        }
+        System.out.println("");
+    }
+
+    public void ElimiNodo() {
+        if (top != null) {//Si la lista esta llena entonces eliminara el ultimo nodo creado.
+            System.out.print("\n" + reset + "El nodo ["+ top.name + reset + "] se elimino.");
+            top = top.next;//Eliminara el ultimo nodo de la lista.
+            total--;//disminuira el total de los nodos creados.
+        } else {
+            System.out.print( "La lista de nodos esta vacia");
+        }
+        System.out.println("");
+    }
+
+    public void GenPalabra() {
+        String palabra1, palabra2, palabra3;
+        char Mayus = (char) (random.nextInt(26) + 'A');//Mediante la linea de código 143 hasta 149 indicamos los valores aleatorios para generar la palabra.
+        char Minu = (char) (random.nextInt(26) + 'a');
+        char Num = (char) (random.nextInt(10) + '0');
+        char Carac = (char) (random.nextInt(15) + '!');
+        char Carac2 = (char) (random.nextInt(7) + ':');
+        char Carac3 = (char) (random.nextInt(6) + '[');
+        palabra1 = ( Mayus + Minu + Mayus + Num + Carac) + reset;
+        palabra2 = ( Mayus + Num + Minu + Mayus + Carac2) + reset;
+        palabra3 = ( Mayus + Mayus + Num + Minu + Carac3) + reset;
+
+        if (top == null) {//Si la lista de nodos es nula entonces la palabra generada sera el pincipal nodo de la lista
+            top = new Nodo();
+            System.out.print( "Palabra generada: ");
+            top.name = palabra1; //Le indicamos que la variable "palabra1" se almacene en la lista
+            System.out.print(palabra1 + "\n");
+            top.next = null;//el siguiente nodo sera nulo
+            total++;
+        } else {//Si la lista tiene valores entonces se creara un nodo temporal para almacenarlo en la lista y hara el mismo procedimiento con las variables "palabra2" y "palabra3"
+            if (cont2 == 0) {
+                Nodo temp = new Nodo();
+                System.out.println("\n" + "Palabra generada: ");
+                temp.name = palabra2;
+                temp.next = top;
+                System.out.print(palabra2 + "\n");
+                top = temp;
+                cont2++;
+                total++;
+            } else if (cont2 == 1) {
+                Nodo temp = new Nodo();
+                System.out.println("\n" + "Palabra generada: ");
+                temp.name = palabra3;
+                temp.next = top;
+                System.out.print(palabra3 + "\n");
+                top = temp;
+                cont2 = ini;
+                total++;
+            }
+        }
+       
+    }
+    
+}
